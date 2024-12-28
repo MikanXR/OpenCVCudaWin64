@@ -3,7 +3,7 @@
 ## Overview
 This is a repo holding a custom build of OpenCV with CUDA support for Windows (64-bit). This is useful if you want to use OpenCV with hardware accelerated Deep Neural Network support using NVidia CUDA on windows. The instructions for building are adapted from the [Build OpenCV on Windows with CUDA!](https://medium.com/@chinssk/build-opencv-on-windows-with-cuda-f880270eadb0) medium blog post (follow along there for pictures). 
 
-Generally the process involves:
+The general steps used to create this repo are:
  - Creating an NVidia account
  - Downloading some CUDA installers 
  - Downloading OpenCV Source
@@ -11,7 +11,15 @@ Generally the process involves:
  - Running CMake configuration
  - Waiting an eternity for a build to complete (took almost 24h for me)
 
-## The Process
+## Using Pre-Built Binaries
+1. [Download](https://github.com/MikanXR/OpenCVCudaWin64/archive/refs/tags/opencv_4.9.0.zip) and extract the latest `Source Code` zip from the [Releases](https://github.com/MikanXR/OpenCVCudaWin64/releases) page
+2. [Download](https://github.com/MikanXR/OpenCVCudaWin64/releases/download/opencv_4.9.0/opencv_world490.dll) and save `opencv_world490.dll` into the extracted `x64\vc17\bin` folder
+3. [Download](https://github.com/MikanXR/OpenCVCudaWin64/releases/download/opencv_4.9.0/opencv_world490d.dll) and save `opencv_world490d.dll` into the extracted `x64\vc17\bin` folder
+4. Reference the opencv folder in your CMake generation
+For example:
+`cmake .. -G "Visual Studio 17 2022" -A x64 -DOpenCV_DIR=C:\Github\OpenCVCuda\opencv_cuda`
+
+## Manual Building Binaries
 
  1. [Download](https://github.com/Kitware/CMake/releases/download/v3.28.1/cmake-3.28.1-windows-x86_64.msi) and install Cmake 3.28
  2. [Download](https://developer.download.nvidia.com/compute/cuda/12.3.2/local_installers/cuda_12.3.2_546.12_windows.exe) CUDA installer
